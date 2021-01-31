@@ -1,0 +1,17 @@
+def main_body():
+
+    jobs_input = list(map(int, input().split(', ')))
+    jobs={k: v for k, v in enumerate(jobs_input)}
+    index=int(input())
+    cycles = 0
+    while True:
+        key=min(jobs, key=jobs.get)
+        cycles+=jobs[key]
+        jobs.pop(key)
+        if key==index:
+            break
+    print(cycles)
+
+
+
+main_body()
