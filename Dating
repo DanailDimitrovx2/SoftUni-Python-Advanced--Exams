@@ -1,0 +1,47 @@
+def return_entity_or_False(units):
+    while len(units)>0:
+        unit=units[0]
+        if unit <= 0:
+            units.pop(0)
+            continue
+        if unit % 25 == 0:
+            units.pop(0)
+            units.pop(0)
+            continue
+        return unit
+    return False
+
+
+def print_left_entities(list):
+    if len(list)>0:
+        separator=', '
+        a=f"{separator.join(map(str, list))}"
+        return a
+    else:
+        return 'none'
+
+
+
+
+
+def main_body():
+    males = list(map(int, input().split(' ')))
+    males.reverse()
+    females = list(map(int, input().split(' ')))
+    matches = 0
+    while True:
+        female = return_entity_or_False(females)
+        male = return_entity_or_False(males)
+        if female == False or male == False:
+            break
+        if female == male:
+            matches += 1
+            males.pop(0)
+        else:
+            males[0] -= 2
+        females.pop(0)
+    print(f"Matches: {matches}")
+    print(f"Males left: {print_left_entities(males)}")
+    print(f"Females left: {print_left_entities(females)}")
+
+main_body()
