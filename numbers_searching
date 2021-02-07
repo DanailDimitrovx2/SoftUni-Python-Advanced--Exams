@@ -1,0 +1,17 @@
+def numbers_searching(*args):
+    duplicates=[]
+    array=[]
+
+    for number in args:
+        if number in array and \
+           number not in duplicates:
+            duplicates.append(number)
+        else:
+            array.append(number)
+
+    array.sort()
+    duplicates.sort()
+
+    missing=[x for x in range(array[0], array[-1]) if x not in array][0]
+    response=[missing, duplicates]
+    return response
